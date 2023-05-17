@@ -1,1 +1,172 @@
-    
+Custom Pipes in Angular
+~~~~~~~~~~~~~~~~~~~~~~
+
+
+	{{email }}						---				tNrao.trainEr@gmail.com
+	{{email | lowercase}}	---				tnrao.trainer@gmail.com
+	
+	
+@Component()
+@Pipe()			---   class should be mark with  @Pipe()
+@Injectable()
+@NgModule()
+
+	
+	
+CLI Command to generate pipe:
+
+		ng  g  p  gender
+		ng  g  p  grade
+		....
+		
+		
+		grade.pipe.ts
+		grade.pipe.spec.ts
+	
+	
+@Pipe({
+		name  :  "gender"
+})	
+export   class   GenderPipe   implements    PipeTransform 
+{
+		transform()
+		{
+			// logic to transform your data
+		}
+}
+
+
+
+
+Apply in template:
+		
+		{{user.gender | gender}}
+		
+-----------------------------------------------------------------------------------
+
+
+m /  f
+M / F
+
+m  	--->		Male 
+f  		--->   	Female 
+
+
+input type	:		string, number, boolean, any, string[],  any[],  Emp[],..... 
+output type	:		string, number, boolean, any, string[],  any[],  Emp[],..... 
+
+
+
+trasnform()
+
+			
+
+
+
+
+
+
+
+
+
+Scalar			----	single value
+Collection 	----	Array of Objects
+
+
+
+
+
+
+
+
+Requirement
+
+
+	filter the employee data based on the deptno 
+	
+	input :  	   any []   /  employee[] 
+	output :     any[]  /   employee[]  
+
+
+
+
+
+
+JavaScript Libs.
+
+	1.   Array Methods
+	2.   String Methods
+	3.   Date   Methods
+	4.   Math  Methods
+	
+	    input.filter()
+
+
+
+
+
+	filter, find, findIndex
+	
+	
+	find(callback)		---		single item 
+	findIndex(callback)	----	index
+	filter(callback)		---		collection items 
+
+
+
+
+   output  = input.filter( item => item.deptno == 10);
+
+(or0)
+	
+	for(let i = 0; i < input.length; i++)
+	{		
+		if(input[i].deptno == 10)
+		{
+			output.push(input[i]);
+		}
+	}
+	
+	
+Pipe with extra parameters
+~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	*ngFor="let item of empsArray | slice :  0:5  "		--  pre-defeind 
+	*ngFor="let item of empsArray | filter  : 10 "
+
+----------------------------------------------------------------------------
+	 transform(input:any[],  dno:number): any[] {
+		 
+		 
+	 }
+	
+	
+------------------------------------------------------------------
+
+What is pipe chaining?
+	{{item.gender | gender  | lowercase }}
+	
+What is pure pipe?
+
+	-->  By default every pipe is pure pipe. 
+	-->  Best performaces
+	-->  Executes only when dependent items are updated. 
+	-->  By default, pipes are defined as pure so that Angular executes the pipe only when it detects a pure change to the input value.
+	-->   Angular executes an impure pipe every time it detects a change.
+	
+	
+	@Pipe({
+		  name: 'grade',
+		  pure: true / false
+		})
+		
+		
+	
+---------------------------------------------------------------	
+	
+
+	
+	
+	
+	
+	
