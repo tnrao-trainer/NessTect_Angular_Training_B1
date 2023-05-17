@@ -1,0 +1,36 @@
+<h3  align="center">Custom Pipes in Angular</h3>
+<hr/>  
+
+
+Min :   
+<select  [(ngModel)]="min">
+    <option>100</option>		
+    <option>200</option>
+    <option>300</option>
+    <option>400</option>
+    <option>500</option>
+</select>  
+
+Max :   
+<select  [(ngModel)]="max">		
+    <option>600</option>
+    <option>700</option>
+    <option>800</option>
+    <option>900</option>
+    <option>1000</option>
+</select> 	
+ 
+	
+ <br/><br/>
+ <table  border="2" width="350">
+    <tr>
+        <th>Student Id</th>
+        <th>Student Name</th>
+        <th>Total Marks</th>
+    </tr>
+	<tr  *ngFor="let item of studentsArray | range : min :  max">
+		<td>{{item.sid}}</td>
+		<td>{{item.sname}}</td>
+		<td>{{item.total}}</td>
+	</tr>
+ </table>
