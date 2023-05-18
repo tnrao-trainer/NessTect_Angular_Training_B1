@@ -1,0 +1,21 @@
+1.  Update the Example3 (Filter depts based on location)  so that drop-down list provide an option "All Depts".  Update the child component location accordingly.
+
+2. Create Employee List component that accepts job as input parameter. Display the list of employees based on the selected Job. 
+
+	  a . app.component.html
+			 
+					<emp-list   [job]="selectedJob"></emp-list>	
+		
+		b.    emp list will display all the employee details in cards format (same as dept example).   
+		
+		c.    Display job roles as hyperlinks in parent component. 
+		
+		d.    Display the employee details based on the selected job hyerplink. 
+		
+
+		
+3.  How to implement data sharing between siblings using @input and @output decorator. 
+ 
+
+ 
+
