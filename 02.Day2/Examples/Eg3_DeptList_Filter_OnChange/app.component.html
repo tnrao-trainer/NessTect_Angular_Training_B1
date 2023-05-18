@@ -1,0 +1,15 @@
+  
+ <h3>Component Communication in Angular</h3>
+ <hr/>
+
+ Select Location  :  
+ <select [(ngModel)]="selectedLoc">
+    <option>Hyd</option>
+    <option>Pune</option>
+    <option>Mumbai</option>
+    <option>Goa</option>
+ </select>
+<hr/>
+ <app-dept-list [loc]="selectedLoc"></app-dept-list>
+ 
+ 

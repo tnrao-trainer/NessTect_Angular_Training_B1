@@ -1,0 +1,15 @@
+  
+ <h3>Component Communication in Angular</h3>
+ <hr/>
+
+ <app-greeting  uname="Scott"></app-greeting>
+ <app-greeting  uname="Narasimha"></app-greeting>
+ <hr/>
+ <app-greeting [uname]="user1"></app-greeting>
+ <app-greeting [uname]="user2"></app-greeting>
+ <hr/>
+ <app-greeting *ngFor="let item of unamesArray"  
+                [uname]="item">
+ </app-greeting>
+ 
+ 
