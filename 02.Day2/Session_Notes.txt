@@ -1,1 +1,119 @@
  
+Component Communication in Angular
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+app.component.html
+~~~~~~~~~~~~~~~~~~~~
+		<app-emps></app-emps>
+		
+
+
+app 		---		parent
+emps 	---	 child 
+
+
+
+
+
+
+
+
+
+	<img  src=""  width=""  border="" />
+	
+	
+	<emp-list></emp-list>
+	
+	<emp-list  job="Manager"></emp-list>
+	
+	-->  job is the input property 
+	-->  @Input() decorator 
+	
+	
+
+
+
+
+
+
+	*.ts
+	~~~~
+	export class  GreetingComponent
+	{
+		@Input()  	uname:string  = "";
+	}
+	
+	*.html
+	~~~~~~~
+		<h1>Welcome to {{uname}} </h1>
+		
+
+
+Parent:
+		<app-greeting  uname=""></app-greeting>
+
+
+
+Example-2
+~~~~~~~~~
+
+Parent :			dept-list
+					--  holds the data -->	  array of dept objects
+					--  send each dept object to child 
+					
+					---  will get deptno from child through event data and delete the dept obj 
+
+Child :				dept-details
+				--   child will get dept object from parent
+				--   child display the department details 
+				
+				--   child will send deptno to parent 		---   trigger the event 
+				
+				
+				
+		
+		
+@Input()			----		attributes  in html elements 
+@Output()			----		event attributes	in html elements
+
+										<button  id="b1"  onclick="handle_click()">Get Data</button>
+										
+										
+
+
+@Input ()    uname:string  = "";
+@Input ()    deptObj:Dept ;
+
+
+@Output() 	onDeptRemove:EventEmitter
+
+---------------------------------------------------------------------------------
+
+Example-3
+~~~~~~~~~~~
+
+AppComponent :		Parent
+
+		-->   Send location name to child 
+		
+				<dept-list  loc="Hyd"></dept-list>
+
+
+DeptListComponent :  Child 
+
+		-->   Allows the location name as Input 
+		-->     Filter the data based on the location and display the filtered results
+		
+		
+		
+
+------------------------------------------------
+Try this additional assignment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+<my-data-grid   [sourceData]="empsArray"></my-data-grid>
+<my-data-grid   [sourceData]="deptsArray"></my-data-grid>
+<my-data-grid   [sourceData]="studentsArray"></my-data-grid>
+<my-data-grid   [sourceData]="productsArray"></my-data-grid>
+ 
