@@ -1,0 +1,30 @@
+Task
+~~~~~
+1.  Create attribute custom directive to apply shadow for the given element. 
+
+	<p    appMyShadow> Text </p>	
+	<p    [appMyShadow]=" 'Blue' "> Text </p>
+	<p    [appMyShadow]=" 'Green' "> Text </p>
+	
+	
+
+2.  Create structural directive that allow only admin users.  
+Show if the given user name is in admins list. Otherwise hide the content. 
+
+	Allowed Admin users:   Scott, Smith, Robert, Mark		(Array of Strings)
+
+		<div   *adminPanel=" 'Scott' ">
+		...
+		</div>
+		
+		<div   *adminPanel=" 'Smith' ">
+		...
+		</div>
+		
+		<div   *adminPanel=" 'Sam' ">
+		...
+		</div>
+		
+		Hint: For "Sam" user we need to hide. 
+	
+	
