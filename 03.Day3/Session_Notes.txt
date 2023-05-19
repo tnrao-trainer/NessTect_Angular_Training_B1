@@ -1,1 +1,122 @@
  
+Directives in Angular
+~~~~~~~~~~~~~~~~~~~~
+
+
+Angular Component
+		--->   application logic  :		*.ts
+		--->	  presentation logic :		*.html		
+							a.  html, css
+							b.  directives  
+							
+							
+Different types directives:
+		1.  Component	
+		2.  Attribute
+		3.  Structural 
+		
+		
+		
+		
+Attribute directives :		ngModel, ngClass, ngStyle, ngSwitch.....
+Structural directives :		*ngIf,  *ngFor,  *ngSwitchCase,  *ngSwitchDefault.....
+
+		<tr  *ngFor="...">
+		</tr>
+		
+		<div  *ngIf="filteredArray.length == 0">
+		</div>
+
+
+		
+		
+Switch control Structure in JavaScript
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
+switch(expression)
+{
+		case  value :    statements;  break; 
+		case  value :    statements;  break; 
+		case  value :    statements;  break; 
+		......
+		default 		 :    statements;  break; 
+}
+
+
+
+<section>
+		<article></article>
+		<article></article>
+		<article></article>
+		<article></article>
+</section>
+
+
+
+Example-1
+~~~~~~~~~~
+
+1.   Present the students details by providing multiple display mode options.
+2.   User can choose any of the display mode :   list, table, custom
+3.   Based on the selected display mode, we need present the details. 
+
+	
+
+
+
+			[ngClass]=" {'bg2':isEven, 'bg3':isOdd} "
+---------------------------------------------------------------------------
+
+
+Decorators in Angular
+~~~~~~~~~~~~~~~~~~~
+@Pipe()
+@Component()
+@Directive()		---		custom directive class 
+@Injectable()   ---			user defined services class 
+@Input()   and   @Output()
+
+-----------------------------------------------------------
+
+		class  ClassName
+		{			
+		 	constructor(  private  uname:string   )  {
+					this.uname = uname;
+			}
+			
+			getData()  {
+				this.uname 	
+			}
+		}
+-----------------------------------------------------------
+		
+		
+Example-2
+~~~~~~~~~~~~
+
+		-->   Create a directive works like a highlighter to highlight the content the html element. 
+		
+	>			ng   g   d HighLighter
+
+
+
+Example-3
+~~~~~~~~~~~~
+
+-->   Creating custom directive for Admin Panels.   If the the current user is admin, then correpsonding element will get add to DOM,  else it will remove from DOM. 
+
+
+		
+ViewContainerRef Methods
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Methods:	
+	1.  createEmbeddedView() :   Instantiates an embedded view and inserts it into this container.	
+	
+		Usage: 
+				   viewContainer.createEmbeddedView(this.templateRef);
+				   
+				   
+				   
+	2.  clear():   
+			
+		Usage:		viewContainer.clear();
