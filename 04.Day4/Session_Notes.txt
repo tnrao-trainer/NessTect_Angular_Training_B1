@@ -1,1 +1,121 @@
  
+Working with Reactive Forms in Angular
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Introduction to Angular Forms 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--> Reading data from the users
+	Eg:   Registration,  Login,  Orders,  Banking --Payment, ..... 
+
+-->  Input controls ---   input, textarea, select 
+
+-->  ngModel  directive ---  2-way data binding
+
+	   input controls  <---     ngModel    --->   	data model (component)
+
+-->  Performing validations 	in Angular Applications
+
+-->  Angular Forms 
+			---   used to perform the validations 
+			---   validate the input 
+			---   send valid data to server 
+-------------------------------------------------------------------------------
+
+Implement Angular Forms:
+
+		1.  Template Driven Forms
+		2.  Model Driven Forms (Reactive Forms)
+		
+		
+
+
+1.  Template Driven Forms
+~~~~~~~~~~~~~~~~~~~~~~~
+
+		@Component({
+				templateUrl :  "app.component.html",
+				......
+		})
+
+
+
+What is template variable?
+
+	<p  #p1 >
+	<input  #txtUname  />
+	<form  #customerForm>
+	<form  #form1>
+	
+	
+	
+	
+	// in javascript
+	let  paraObj  =  document.getElementById("para1") 
+
+
+
+
+Reactive Forms
+~~~~~~~~~~~~~~
+
+
+
+FormGroup 			-----				<form></form>
+FormControl 			-----				<input  />
+
+
+
+Accessing form controls using form group object:
+
+
+	customerForm.controls.fname.invalid		---		old version
+	customerForm.controls['fname'].invalid		---		latest  version
+
+
+
+Usage:  
+
+ <span *ngIf="customerForm.controls.fname.invalid" class="error">First Name is required</span>
+ 
+ 
+ Single Validation Rule:
+  fname  :   new FormControl(null, Validators.required),
+       
+	   
+Multiple Validation Rules:
+        city     :   new FormControl(null, [Validators.minLength(3), Validators.maxLength(10)]),
+		email  :   new FormControl(null, [Validators.required, Validators.email]),
+		
+		
+		
+		
+Accessing the values from FormGroup object (Form Model data):  
+
+
+	this.customerForm.value 	----		object  (key-value pairs)
+	
+	<h3>{{customerForm.value | json }}</h3>
+	
+	{  fname  :  "Ravi", lname  :  "Kumar", ....................... }
+
+
+
+
+Email 	----		required,  email 
+Pincode  ----   required, pincode 
+
+<span></span>
+
+<div *ngIf="f['email'].errors['required']">Email is required</div>
+<div *ngIf="f['email'].errors['email']">Email must be a valid email address</div>
+
+
+
+
+get f() { return this.registerForm.controls; }
+
+f['title']
+
+
+customerForm.controls["title"]
