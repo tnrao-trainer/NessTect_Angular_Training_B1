@@ -1,0 +1,201 @@
+Dependency Injection and Services in Angular
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Steps for developing and consuming services
+
+1. Create a service using angular CLI.
+2. Add the required logic in service class
+3. Provide the services using Providers 
+4. Inject the service object in component
+5. Access the members of services to perform operation.
+
+
+
+
+
+1.  	ng  g   s  data 
+
+		data.services.ts
+		data.services.spec.ts
+		
+		log.services.ts
+		log.services.spec.ts
+
+2.   defined the required methods in service class 
+
+	@Injectable({
+		....
+	})
+	export  class   DataServies
+	{		
+		getData()
+		{
+			// logic 
+		}		
+	}
+
+
+3.  Service Provider
+
+	a.  Using providedIn property of Injectable metadata:
+	
+		@Injectable({
+		  providedIn: 'root'
+		})
+		
+	b.  app.module  provders section:
+		
+		@NgModule({
+			declarations :  [ ....... ]
+			providers :  [  DataServices  ]			
+		})
+		
+	
+
+4.  Service Consumer 
+
+class  AppComponent
+{
+		constructor(private  dataServices:DataService)
+		{
+			
+		}
+		
+		button_click()
+		{
+			//   5.  Access services members
+			this.dataServices.getData();
+		}
+}
+
+
+
+
+@Injectable() decorator
+~~~~~~~~~~~~~~~~~~~~~
+-->  By default, the Angular CLI command  "ng generate service"  registers a provider with the root injector for your service by including provider metadata in the @Injectable() decorator. 
+
+
+@Injectable({
+		providedIn: 'root'
+})
+
+
+What is tree-shaking?
+
+Registering the provider in the @Injectable() metadata also allows Angular to optimize an app by removing the service from the compiled application if it isn't used, a process known as tree-shaking.
+
+--------------------------------------------------------------------------------------
+
+
+Note:    Not only in components, but also  services can be injected into another services. 
+
+
+
+
+	@Injectable({
+		....
+	})
+	export  class   DataServies
+	{		
+		constructor(private logger:LogServices)
+		{
+			
+		}
+	}
+
+
+
+	@Injectable({
+		....
+	})
+	export  class   DataServies
+	{		
+		constructor(private httpClick:HttpClient)
+		{
+			
+		}
+	}
+-------------------------------------------------------------------------------------------
+
+
+Understanding Injector
+~~~~~~~~~~~~~~~~~~~~
+
+1. Module Level (Entire Application):
+		a.   @NgModule()	 ---   app.module.ts
+		
+				@NgModule({
+						....
+						providers:  [ DataServices ]
+				})
+		
+		b.   @Injectable({
+					providedIn : 'root'
+		})
+		
+	Note:   Single DataService instance will share across the application. 
+		
+2.   Specific Particular Module Only (Feature / Sub-module):
+		a.   @NgModule()	 ---   admin.module.ts
+		
+				@NgModule({
+						....
+						providers:  [ DataServices ]
+				})
+		
+		b.   @Injectable({
+					providedIn : 'AdminModule'
+		})
+		
+		
+		Note :   
+		-->  In the above section DataServices is available only within the AdminModule items.
+		-->  Single DataService instance will share across the AdminModule. 
+	
+3.  Component Level: 
+
+	@Component({
+		  selector: 'app-emp-list',
+		  templateUrl: './emp-list.component.html',
+		  styleUrls: ['./emp-list.component.css'],
+		  providers :  [ DataServices ]
+    })
+	
+	-->  Create  separate instance of the services  for the particular component
+	
+
+	
+
+
+
+Injecter verify in the following order for service provders registration:
+
+------>	AppModule
+-----------------> 	AdminModule
+---------------------------------> 	Parent Component
+-------------------------------------------------> 	Child Component
+		
+----------------------------------------------------------------------------------------------------------
+How to use  useClass option in provider?
+
+-->  The useClass provider key lets you create and return a new instance of the specified class. You can use this type of provider to substitute an alternative implementation for a common or default class. 
+
+				{ provide :  DataService,   useClass :   EmpDataService  }
+				
+				
+Note:  You can configure, that when a constructor requests DataService Angular DI creates an instance of EmpDataService and passes it to the constructor.
+
+
+How to use useExisting option in provider?
+
+		useExisting - allows you to alias a token and reference any existing one.
+
+			 providers :  [
+							EmpDataService,
+							{ provide :  DataService,   useExisting :  EmpDataService  }]
+	
+	
+ 
+	
