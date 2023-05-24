@@ -1,0 +1,11 @@
+1. Create an angular component to implement the following requirements:
+		a. create an observable object that send the depts object 
+		b. subscribe in button click event
+		c. display the dept deails in div tag
+		
+2.  Create an angular component to implement the following requirements:
+
+		a.  create an observable object that returns set of city names using "of" operator. 
+		b. use rxjs operators that returns the results into uppercase format. 	(Hint: Use pipe, map operators).
+		
+3.   How to use filter operator in RxJS, do with an example.		
