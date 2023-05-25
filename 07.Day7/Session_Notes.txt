@@ -1,0 +1,70 @@
+HTTP Client - Making server calls in Angular
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+FrontEnd App		---->		 AJAX 			--->		 Server API		--->      Database
+ 
+ -->  Data exchange is happens in XML Format 
+ -->  Latest technique :		JSON 
+ 
+ 
+ Old Version:
+ import {HttpModule}  from '@angular/http';
+  Module :   HttpModule
+  Service Class	---		Http
+ 
+ Latest Versions:
+ import {HttpClientModule}  from '@angular/common/http';
+ Module :   HttpClientModule
+ Service Class	----    HttpClient
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ HttpClient class methods
+ ~~~~~~~~~~~~~~~~~~~~~~~
+ 
+ 
+ 1.   get()
+ 
+ 
+		let url  = "";
+		let observableObj =  httpClient.get(url)
+		observableObj.subscribe(callback);
+		
+		(OR)
+		
+		httpClient.get(url).subscribe(callback);
+		
+	----------------------------------------------------------------------------------
+	
+	
+	a. Perform all CRUD Operations
+	
+	b. Angular Services ---   data services
+				--->		async calls in service methods 
+				
+	c.  Inject HttpClient in Data Services
+	
+	
+	
+	
+	
+	Get 		:		http://localhost:3000/depts
+	Get 		:		http://localhost:3000/depts/10
+	
+	
+	 
+	
+getTypedData() : Observable<Student[]>
+{
+  return this.httpClient.get<Student[]>(this.baseUrl);
+}
+   
+   
+   
+	 
