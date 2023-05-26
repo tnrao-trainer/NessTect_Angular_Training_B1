@@ -1,0 +1,87 @@
+ 
+Routing in Angular
+~~~~~~~~~~~~~~~~~
+
+	
+
+	Route 	---->				url,  component
+	
+					/		----		HomeComponent
+					/Emps		----		EmpComponent
+					/Dept		----		DeptsComponent
+					/Aboutus		---- AboutusComponent
+					
+					
+
+ 
+ 
+<a  [routerLink]="  ['/']  " >Home</a>
+<a  [routerLink]="  ['/Emps']  " >Employees</a>
+<a  [routerLink]="  ['/Depts']  " >Depts</a>
+
+
+
+
+
+
+1.  Implement routing and navigations  --- basic level
+2.  How to handle invalid routes / 404 error / wrong url?
+
+3.  How to handle route parameters?			
+			ActivatedRoute  class		--   @angular/router
+			let str = this.activatedRoute.snapshot.params["uid"];
+			
+4. How to handle query parameters / query string ?
+			
+		Sample Url:  http://localhost:4200/Home?uid=scott
+
+	Class :     	ActivatedRoute 
+	Usage:		let str = this.activatedRoute.snapshot.queryParams["uid"];
+
+
+
+5.   How to protect the routes?  								
+6.   How to navigate to the route using code? 
+
+				Class :     Router  Service 
+				this.router.navigate(['/Login']);
+			
+	  
+
+	
+
+
+
+
+AuthGuard Service 
+
+	a. verify the user token in sessionStorage
+	b. if valid 	----		proceed to requested page
+	c. if invalid 	----		redirect the user to login route 
+										send requested route as query param
+	
+	
+LoginComponent
+
+	a.  verify uid, pwd
+	b.  if correct :	
+				---		store token in local/session
+				---        redirect to requested route
+				
+	c.   if incorrect :		show error message			
+
+
+-------------------------------------------------------------------
+
+Steps
+~~~~~~
+
+1.    Create AuthGuard Service class
+	
+2.    Configure the route with canActivate property: 
+
+		{path : "Emps", component : EmpsComponent, canActivate : [AuthGuardService] },
+
+
+
+
